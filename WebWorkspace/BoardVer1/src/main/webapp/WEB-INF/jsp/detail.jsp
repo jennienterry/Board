@@ -24,15 +24,17 @@ String no = request.getParameter("no");
 			<input type="hidden" name="no" value="<%=no %>">
 			<input type="submit" value="삭제">
 		</form>
-
+		<a href="/mod?no=<%=no %>"><button>수정</button></a>
 	</div>
+	
 	<div>
 		제목 :
 		<%=vo.getTitle()%></div>
 	<div><%=vo.getCtnt()%></div>
+	<a href="/list"><input type="button" value="목록"></a>
 </body>
 </html>
 
 
 <!-- <a href="/del?no=<%=no %>"><button>삭제</button></a> : get방식으로 삭제버튼 만들기 -->
-<!-- &{param.no} 14번대신 이걸로 사용해도 가능 = EL식 -->
+<!-- &{param.no} 이걸로 사용해도 가능 = EL식 -->
