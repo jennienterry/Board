@@ -14,7 +14,7 @@
 	<div>제목 : ${vo.title}</div> <!-- detail servlet에서 담아둔 키값을 사용함 "vo" -->
 	<div>내용 : ${vo.ctnt}</div>
 	
-	<a href="/delete?no=${param.no}"><button>삭제</button></a>
+	<a href="/delete?no=${param.no}"><button>삭제</button></a>  
 	<a href="/mod?no=${param.no}"><button>수정</button></a>
 </body>
 </html>

@@ -1,4 +1,4 @@
-package com.koreait.board2;
+ package com.koreait.board2;
 
 import java.io.IOException;
 import java.util.List;

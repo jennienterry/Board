@@ -24,6 +24,7 @@ public class BoardDetailServlet extends HttpServlet {
 		
 		String jsp = "WEB-INF/jsp/detail.jsp";
 		request.getRequestDispatcher(jsp).forward(request,response);
+
 	}
 
 }
