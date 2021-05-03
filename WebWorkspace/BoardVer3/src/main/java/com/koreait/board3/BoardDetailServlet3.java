@@ -18,18 +18,16 @@ public class BoardDetailServlet3 extends HttpServlet {
 		
 //		request.setAttribute("",""); 이렇게 해서 보내줘도 하긴 함 ^^;
 		
-//		BoardVO3 param = new BoardVO3();
-//		param.setIboard(intIboard);
+		BoardVO3 param = new BoardVO3();
+		param.setIboard(intIboard);
 		
-		BoardVO3 data = BoardDAO.selBoard(intIboard); //한줄 가져옴 / selBoardList면 여러
+		BoardVO3 data = BoardDAO.selBoard(param); //한줄 가져옴 / selBoardList면 여러		
+		 
+		
 		request.setAttribute("data",data);
 		
-		String jsp = "WEB-INF/view/detail3.jsp";
+		String jsp = "/WEB-INF/view/detail3.jsp";
 		request.getRequestDispatcher(jsp).forward(request, response);
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
 	}
 
 }

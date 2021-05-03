@@ -23,8 +23,8 @@ public class BoardWriteServlet3 extends HttpServlet {
 			String title = request.getParameter("title"); //html에서 오는 것은 parameter
 			String ctnt = request.getParameter("ctnt");
 			
-			System.out.printf("title : "+ title );
-			System.out.printf("ctnt : "+ ctnt );
+//			System.out.printf("title : "+ title );
+//			System.out.printf("ctnt : "+ ctnt );
 			
 			
 			BoardVO3 vo = new BoardVO3(); 

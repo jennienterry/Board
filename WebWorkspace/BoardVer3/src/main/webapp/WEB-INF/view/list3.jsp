@@ -32,6 +32,7 @@ border-collapse:collapse;
 
 			<c:forEach items="${list}" var="i">
 				<tr class="record" onclick="moveToDetail(${i.iboard});">
+	<!-- a태그 말고 onclick 사용하는 이유 : 밑에 td 한줄씩 각 개인으로 a태그를 적어줘야하기 때문에 한번에 하기 위해서 (a태그면 중복소스 많음) -->
 					<td>${i.iboard}</td>
 					<td>${i.title}</td>
 					<td>${i.regdt}</td>

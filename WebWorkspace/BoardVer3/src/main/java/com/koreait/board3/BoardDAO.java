@@ -25,7 +25,7 @@ public class BoardDAO { // db에 실제로 보내는 역할
 		try {
 			con = DBUtils.getCon();
 			ps = con.prepareStatement(sql);
-			
+
 			ps.setString(1, vo.getTitle()); // 정수값 넣을거면 두번째 자리에 int형 넣어야함 = 타입 맞추기
 			ps.setString(2, vo.getCtnt()); // ex) ps.setInt(1,111111);
 //			(?, ?) 물음표 쓸 때만 하는 과정 -> 변수명.set~ 
@@ -46,31 +46,33 @@ public class BoardDAO { // db에 실제로 보내는 역할
 //	객체생성 안했으니까 static
 	public static List<BoardVO3> selBoardList() {
 		List<BoardVO3> list = new ArrayList();
-		
+
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 
-		String sql = "SELECT iboard, title, regdt FROM t_board";
+		String sql = "SELECT iboard, title, regdt FROM t_board" + " ORDER BY iboard DESC";
+		// "select문 " + " order" 할 때 select문 맨 뒤나, order 맨 앞에 띄어쓰기 해야함
+		// 띄어쓰기 안하면 db에서 띄어쓰기가 안되기 때문에 식이 먹히지 않음 !
 		try {
 			con = DBUtils.getCon();
 			ps = con.prepareStatement(sql);
-			
+
 			rs = ps.executeQuery(); // select때만 Query사용
-		
-			while(rs.next()) { //true면 실행 = 레코드 있는지(true) 없는지(false) / 최초니까 첫번째꺼 호출0
+
+			while (rs.next()) { // true면 실행 = 레코드 있는지(true) 없는지(false) / 최초니까 첫번째꺼 호출0
 				BoardVO3 vo = new BoardVO3();
 				list.add(vo);
-				
+
 				int iboard = rs.getInt("iboard");
 				String title = rs.getString("title");// "컬럼명"
 				String regdt = rs.getString("regdt");
-		
+
 				vo.setIboard(iboard);
 				vo.setTitle(title);
 				vo.setRegdt(regdt);
 			}
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -79,42 +81,97 @@ public class BoardDAO { // db에 실제로 보내는 역할
 		return list; // ArrayList주소값을 넣을 것이다.
 	}
 
-public static BoardVO3 selBoard(int iboard) {
-		
+	public static BoardVO3 selBoard(BoardVO3 bowl) {
+
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		
-		String sql = "SELECT * FROM t_board WHERE iboard = ?";
-		
+
+		String sql = "SELECT title, ctnt, regdt FROM t_board WHERE iboard = ?";
+		// 원하는 값의 컬럼명만 적는 것 / join할 때 AS 용이 /where절에 pk가 들어가면 유일하기 때문에 하나의 값만 나온다.
 		try {
-			con = DBUtils.getCon();			
+			con = DBUtils.getCon();
 			ps = con.prepareStatement(sql);
-			ps.setInt(1, iboard);
-			
+			ps.setInt(1, bowl.getIboard());
+
 			rs = ps.executeQuery();
-			
-			if(rs.next()) {				
+
+			if (rs.next()) {
+
 				BoardVO3 vo = new BoardVO3();
 				
-				String title = rs.getString("title");
+//				int iboard = rs.getInt("iboard");
+				String title = rs.getString("title"); // 컬럼명
 				String ctnt = rs.getString("ctnt");
 				String regdt = rs.getString("regdt");
-				
-				vo.setIboard(iboard);				
+
+				vo.setIboard(bowl.getIboard());
 				vo.setTitle(title);
 				vo.setCtnt(ctnt);
 				vo.setRegdt(regdt);
-				
+
 				return vo;
+
 			}
-			
-		} catch (Exception e) {			
+
+		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			DBUtils.close(con, ps, rs);
 		}
 		return null;
+	}
+
+	public static int updateBoard(BoardVO3 param) { // param = 정보가 다 들어가있는 객체상태
+		Connection con = null;
+		PreparedStatement ps = null;
+
+		String sql = " UPDATE t_board" + " SET title = ?" + " , ctnt = ?" + " WHERE iboard = ?";
+
+		try {
+			con = DBUtils.getCon();
+			ps = con.prepareStatement(sql);
+
+			ps.setString(1, param.getTitle());
+			ps.setString(2, param.getCtnt());
+			ps.setInt(3, param.getIboard());
+
+			return ps.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBUtils.close(con, ps);
+		}
+
+		return 0;
+	}
+
+	public static int delBoard(BoardVO3 param) { // 메소드는 수정하지 않는 것이 좋다.
+//		이렇게 int값으로 주면 나중에 메소드와 servlet 둘다 수정해야한다.
+//		param.을 이용하면(주소값으로 접근하는 것) 객체인 BoardVO3에 추가만 하면 되기 때문에 수정이 용이하다. (유연)
+//		대문자로 시작하면 객체라서 .으로 접근 가능 (ex. BoardVO3 객체니까 / param.으로 접근이 가능하게 되는 것)
+		Connection con = null;
+		PreparedStatement ps = null;
+
+		String sql = "DELETE FROM t_board WHERE iboard = ?";
+
+		try {
+			con = DBUtils.getCon();
+			ps = con.prepareStatement(sql);
+
+			ps.setInt(1, param.getIboard());
+//			param으로 했기 때문에 클래스에 멤버필드를 추가시키고 여기에는 param.으로 추가만 하면 됨
+			System.out.println(ps.toString());
+			return ps.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBUtils.close(con, ps);
+		}
+
+		return 0;
 	}
 }
 

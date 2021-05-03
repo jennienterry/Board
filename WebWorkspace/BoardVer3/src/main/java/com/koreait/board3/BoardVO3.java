@@ -5,7 +5,14 @@ public class BoardVO3 {
 	private String title;
 	private String ctnt;
 	private String regdt;
+	private int iuser;
 	
+	public int getIuser() {
+		return iuser;
+	}
+	public void setIuser(int iuser) {
+		this.iuser = iuser;
+	}
 	public int getIboard() {
 		return iboard;
 	}
