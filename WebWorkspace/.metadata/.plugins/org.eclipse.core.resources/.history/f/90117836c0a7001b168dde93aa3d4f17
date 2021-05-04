@@ -1,0 +1,15 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>list</title>
+</head>
+<body>
+	<h1>list</h1>
+	<a href="/write">write</a>
+	
+	<div> 글 리스트가 보일 부분 </div>
+</body>
+</html>

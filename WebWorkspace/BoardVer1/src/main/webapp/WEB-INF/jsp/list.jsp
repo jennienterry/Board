@@ -19,7 +19,7 @@ table, th, td {
 }
 </style>
 </head>
-<body>
+<body>              
 	<h1>리스트</h1>
 	<div>
 		<a href="/write">글쓰기</a>
@@ -30,7 +30,7 @@ table, th, td {
 				<th>no</th>
 				<th>제목</th>
 			</tr>
-			<%
+			<% 
 			for (int i = 0; i < list.size(); i++) {
 				BoardVO vo = list.get(i);
 			%>

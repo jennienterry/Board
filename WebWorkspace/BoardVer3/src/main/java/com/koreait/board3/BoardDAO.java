@@ -67,6 +67,7 @@ public class BoardDAO { // db에 실제로 보내는 역할
 				int iboard = rs.getInt("iboard");
 				String title = rs.getString("title");// "컬럼명"
 				String regdt = rs.getString("regdt");
+				// list니까 ctnt는 필요없음
 
 				vo.setIboard(iboard);
 				vo.setTitle(title);
@@ -127,7 +128,7 @@ public class BoardDAO { // db에 실제로 보내는 역할
 		PreparedStatement ps = null;
 
 		String sql = " UPDATE t_board" + " SET title = ?" + " , ctnt = ?" + " WHERE iboard = ?";
-
+											//set은 한번만 !
 		try {
 			con = DBUtils.getCon();
 			ps = con.prepareStatement(sql);
@@ -136,7 +137,7 @@ public class BoardDAO { // db에 실제로 보내는 역할
 			ps.setString(2, param.getCtnt());
 			ps.setInt(3, param.getIboard());
 
-			return ps.executeUpdate();
+			return ps.executeUpdate(); // executeUpdate() : return 안하면 값만 남고 그 값을 사용 안하겠다는 의미가 됨
 
 		} catch (Exception e) {
 			e.printStackTrace();

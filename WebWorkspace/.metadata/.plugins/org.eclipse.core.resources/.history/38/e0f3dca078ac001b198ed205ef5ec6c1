@@ -1,0 +1,15 @@
+package com.jimin.board3;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+
+public class BoardDAO {
+	
+	public static int insertBoard(BoardVO vo) {
+		Connection con = null;
+		PreparedStatement ps = null;
+		
+		
+	}
+
+}

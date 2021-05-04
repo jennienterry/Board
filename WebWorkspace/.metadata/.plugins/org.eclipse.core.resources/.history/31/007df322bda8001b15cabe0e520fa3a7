@@ -1,0 +1,48 @@
+package com.koreait.board3;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class DBUttils {
+//  잘 되는지 확인하기 위한 것
+//	public static void main(String[] args) {
+//		try {
+//			getCon();
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//	}
+	
+					//다리놓는 작업
+	public static Connection getCon() throws Exception {
+		final String DRIVER = "com.mysql.cj.jdbc.Driver";
+		final String URL = "jdbc:mysql://localhost:3308/boardver3";
+		final String USER_NAME = "root";
+		final String PASSWORD = "koreait";
+
+		Class.forName(DRIVER);
+		Connection con = DriverManager.getConnection(URL, USER_NAME, PASSWORD);
+		System.out.println("연결성공");
+		return con;
+
+	}
+	
+	
+	// 여는순서 : con -> ps - > rs / 닫는순서 : rs -> ps -> con
+	//                       (con,ps 무조건사용 / ps 쿼리문 실행역할 - > 필수적으로 사용 // rs : ps 실행한 결과가 rs에 담김 (셀렉트문에서만 사용)
+	public static void close(Connection con, PreparedStatment ps, ResultSet rs) {
+		if(rs!=null) {
+			try {rs.close();}catch(SQLException e) {e.printStackTrace();}
+		}
+		
+		if(ps!=null) {
+			try {ps.close();}catch(SQLException e) {e.printStackTrace();}
+		}
+		
+		if(con!=null) {
+			try {con.close();}catch(SQLException e) {e.printStackTrace();}
+		}
+	}
+}

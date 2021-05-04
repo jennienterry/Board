@@ -1,0 +1,27 @@
+package com.jimin.board3;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+
+public class BoardDAO {
+
+	public static int insertBoard(BoardVO vo) {
+		Connection con = null;
+		PreparedStatement ps = null;
+
+		String sql = "INSERT INTO t_board " + "(title, ctnt) " + "VALUES " + "(?,?)";
+
+		try {
+			con = DBUtils.getCon();
+			ps = con.PrepareStatement(sql);
+		}
+
+		catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBUtils.close(con, ps);
+		}
+		return 0;
+	}
+
+}

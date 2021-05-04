@@ -19,11 +19,11 @@ public class DBUtils {
 					//다리놓는 작업
 	public static Connection getCon() throws Exception {
 		final String DRIVER = "com.mysql.cj.jdbc.Driver";
-		final String URL = "jdbc:mysql://localhost:3308/boardver3"; //+ DB_NAME;
+		final String URL = "jdbc:mysql://localhost:3308/boardver3"; //jdbc:DBMS명://IP주소:포트번호(디폴트3306)/DB명;
 		final String USER_NAME = "root";
 		final String PASSWORD = "koreait";
 
-		Class.forName(DRIVER);
+		Class.forName(DRIVER); //생략가능
 		Connection con = DriverManager.getConnection(URL, USER_NAME, PASSWORD);
 		System.out.println("연결성공");
 		return con;
@@ -37,15 +37,15 @@ public class DBUtils {
 	
 	public static void close(Connection con, PreparedStatement ps, ResultSet rs) {
 		if(rs != null) {
-			try {rs.close();}catch(SQLException e) {e.printStackTrace();}
+			try {rs.close();} catch(SQLException e) {e.printStackTrace();}
 		}
 		
 		if(ps != null) {
-			try {ps.close();}catch(SQLException e) {e.printStackTrace();}
+			try {ps.close();} catch(SQLException e) {e.printStackTrace();}
 		}
 		
 		if(con != null) {
-			try {con.close();}catch(SQLException e) {e.printStackTrace();}
+			try {con.close();} catch(SQLException e) {e.printStackTrace();}
 		}
 	}
 }

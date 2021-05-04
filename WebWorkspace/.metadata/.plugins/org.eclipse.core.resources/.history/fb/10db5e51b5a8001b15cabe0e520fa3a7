@@ -1,0 +1,11 @@
+package com.koreait.board3;
+
+import java.sql.Connection;
+
+public class DBUttils {
+	public static Connection getCon() throws Exception {
+	
+	final String URL = "jdbc:mysql://localhost:3308/boardver3";
+	final String USER_NAME = "root";
+	final String PASSWORD = "koreait";
+	}

@@ -1,0 +1,39 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%
+List<BoardVO> list = (List<BoardVO>) request.getAttribute("data");
+%>
+<%@ page import="com.koreait.board2.*,java.util.*"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>list</title>
+<style>
+ table,th,td{
+ border:1px solid black;
+ border-collapse:collapse;}
+</style></head>
+<body>
+	<h1>list</h1>
+	<a href="/write"><button>write</button></a>
+
+	<div>
+		<table>
+			<tr>
+				<th>no</th>
+				<th>제목</th>
+			</tr>
+			<td>
+				<%
+				for (int i = 0; i < list.size(); i++) {
+					BoardVO vo = list.get(i);
+				%>
+			</td>
+			<td><%=vo.getTitle()%></td>
+			<%}%>
+		</table>
+
+	</div>
+</body>
+</html>

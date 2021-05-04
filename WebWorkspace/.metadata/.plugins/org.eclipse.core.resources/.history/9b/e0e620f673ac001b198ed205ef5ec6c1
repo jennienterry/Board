@@ -1,0 +1,10 @@
+package com.jimin.board3;
+
+public class DBUtils {
+	public static connection getCon() throws Exception{
+		final String Driver : "";
+		final String URL :"";
+		final String USER_NAME : "";
+			final String PASSWORD : "";
+	}
+}

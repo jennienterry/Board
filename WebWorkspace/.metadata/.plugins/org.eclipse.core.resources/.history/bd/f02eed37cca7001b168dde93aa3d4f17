@@ -1,0 +1,16 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>detail</title>
+</head>
+<body>
+	<div>쿼리스트링 : %{param.no}</div>
+	<div>제목 : %{data.title}</div>
+	<h1>detail</h1>
+	<div>제목 : ${vo.title}</div> <!-- detail servlet에서 담아둔 키값을 사용함 "vo" -->
+	<div>내용 : ${vo.ctnt}</div>
+</body>
+</html>

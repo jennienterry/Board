@@ -1,0 +1,6 @@
+package com.koreait.board2;
+
+public class Database {
+	public static List db = new ArrayList();
+
+}

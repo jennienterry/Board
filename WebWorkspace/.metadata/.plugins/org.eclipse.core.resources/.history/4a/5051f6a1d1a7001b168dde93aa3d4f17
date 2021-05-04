@@ -1,0 +1,19 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>detail</title>
+</head>
+<body>
+
+	<h1>detail</h1>
+	<div>제목 : ${vo.title}</div> <!-- detail servlet에서 담아둔 키값을 사용함 "vo" -->
+	<div>내용 : ${vo.ctnt}</div>
+</body>
+</html>
+
+<!--(키값 : 서블릿에서 set한거)
+ ${담을 때 썼던 키값. 멤버필드명} : EL식 사용방법 -->
+<!-- * request.setAttribute한거만 EL식 사용할 수 있음 -->

@@ -16,6 +16,7 @@ String no = request.getParameter("no");
 </head>
 <body>
 	<h1>
+<!-- ${param.no},스크립트릿 안써도 되는법 (database 있을 때) -->
 		디테일<%=no%></h1>
 	detail
 	<%=request.getParameter("no")%>
@@ -29,6 +30,7 @@ String no = request.getParameter("no");
 	
 	<div>
 		제목 :
+<!-- ${data.title}, 스크립트릿 안써도 되는법 (database 있을 때) -->
 		<%=vo.getTitle()%></div>
 	<div><%=vo.getCtnt()%></div>
 	<a href="/list"><input type="button" value="목록"></a>
