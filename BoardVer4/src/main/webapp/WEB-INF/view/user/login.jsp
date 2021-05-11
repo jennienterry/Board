@@ -5,13 +5,17 @@
 <head>
 <meta charset="UTF-8">
 <title>로그인</title>
+<style>
+.errMsg {color:red};
+</style>
 </head>
 <body>
 	<div>
-		<form>							 <!-- placeholder : 바에 연하게 뜨는거 -->
-			<div><input type="text" name="uid" placeholder="아이디"></div>
-			<div><input type="password" name="upw" placeholder="비밀번호"></div>
-			<div>
+	<div class = "errMsg">${errMsg}</div>
+		<form action="login" method="post">			 <!-- placeholder : 바에 연하게 뜨는거 -->
+			<div><input type="text" name="uid" placeholder="아이디" value="jimin"></div>
+			<div><input type="password" name="upw" placeholder="비밀번호" value="terry"></div>
+			<div>											<!-- value는 테스트용 -->
 			<input type="submit" value="Login">
 			</div>
 	</form>
