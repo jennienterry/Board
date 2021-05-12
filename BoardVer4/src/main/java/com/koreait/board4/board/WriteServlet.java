@@ -36,7 +36,10 @@ public class WriteServlet extends HttpServlet {
 		HttpSession hs = request.getSession();
 		UserVO userVO = (UserVO)hs.getAttribute("loginUser");
 //		int iuser = userVO.getIuser(); //UserVO보면 타입이 int임
-				
+//		int iuser = loginUser.getIuser(); // 다른사용자가 내 글을 수정,삭제 못하도록 하는 것
+		
+		int iuser = MyUtils.getLoginUserPk(request);
+		
 		BoardVO param = new BoardVO();
 		param.setTitle(title);
 		param.setCtnt(ctnt);

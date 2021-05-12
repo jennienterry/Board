@@ -18,7 +18,7 @@ public class LoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession hs = request.getSession();
 		UserVO loginUser = (UserVO) hs.getAttribute("loginUser");
-		if(loginUser != null) { //주소값이 null이 아니다 = 로그인이 되어있다
+		if(loginUser != null) { //주소값이 null이 아니다 = 로그인 성공
 			response.sendRedirect("/board/list");
 			return;
 		}
@@ -38,7 +38,7 @@ public class LoginServlet extends HttpServlet {
 		int result = UserDAO.loginUser(vo); //db와 확인하기 위해서
 		
 		
-		if(result ==1) { //로그인 성공
+		if(result ==1) {
 			HttpSession hs = request.getSession();
 			vo.setUpw(null); // 비밀번호는 담을필요 없기 때문에 (위에서 upw담았으니까) null;
 			hs.setAttribute("loginUser", vo);

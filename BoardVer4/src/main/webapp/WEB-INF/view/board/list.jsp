@@ -32,8 +32,8 @@ table,th,td{
 				<th>작성일</th>
 			</tr>
 
-			<c:forEach var="i" items="${list}">
-				<tr>
+			<c:forEach var="i" items="${list}"> <!-- listServlet에서 옴 -->
+				<tr onclick="moveToDetail(${i.iboard})">
 					<td>${i.iboard}</td>
 					<td>${i.title}</td>
 					<td>${i.unm}</td>
@@ -42,5 +42,17 @@ table,th,td{
 			</c:forEach>
 		</table>
 	</div>
+	<script>
+	function moveToDetail(iboard){
+		console.log('iboard');
+		location.href='detail?iboard=' + iboard;
+	}
+	</script>
 </body>
 </html>
+
+
+
+
+
+
