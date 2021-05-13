@@ -22,7 +22,6 @@ public class LoginServlet extends HttpServlet {
 			response.sendRedirect("/board/list");
 			return;
 		}
-		
 		MyUtils.openJSP("user/login", request, response);
 	}
 
@@ -34,9 +33,8 @@ public class LoginServlet extends HttpServlet {
 		UserVO vo = new UserVO();
 		vo.setUid(uid);
 		vo.setUpw(upw);
-		
+	
 		int result = UserDAO.loginUser(vo); //db와 확인하기 위해서
-		
 		
 		if(result ==1) {
 			HttpSession hs = request.getSession();
@@ -49,6 +47,7 @@ public class LoginServlet extends HttpServlet {
 			response.sendRedirect("/board/list");
 			return;
 		}
+		
 		String errMsg = null;
 		switch(result) {
 		case 0:
@@ -65,8 +64,6 @@ public class LoginServlet extends HttpServlet {
 		doGet(request,response); //바로 위의 메소드를 호출한거
 		//response.sendRedirect("login?err=" + result); 이렇게 하면 값전달은 무조건 쿼리스트링으로
 		}
-	
 	}
-
 
 // doGet의 request와 doPost의 request가 다르다.
