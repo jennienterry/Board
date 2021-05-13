@@ -1,0 +1,79 @@
+Boardver4
+
+1. t_user DB 테이블 만들어준다.
+2. dynamic web project를 만든다.
+3. web.xml 한글깨짐 문장 추가해준다.
+
+
+4. com.koreait.board4.user패키지에 UserVO 만들어준다. (getter, setter)
+
+5. com.koreait.board4패키지에 MyUtils > openJSP 메소드, string을 int로 만들어주는 메소드를 만들어준다.
+
+6. com.koreait.board4패키지에 DBUtils 만들어준다.
+ - connection, close 2가지
+
+7. web-inf>view>user 폴더에 join.jsp와 com.koreait.board4.user 패키지에 joinservlet 만들어서 이동할 수 있게 해준다.
+ - jsp는 post방식
+
+8. com.koreait.board4.user패키지에 UserDAO만들어준다.
+ - joinUser 메소드만들기
+ - loginUser 메소드만들기 (db에 있는 정보와 사용자가 입력한게 맞는지 비교하는 분기문 + 아이디있으면 if문 들어가서 비밀번호 확인하고 1반환 / 비밀번호 틀리면3반환 / 아이디 없으면 2반환 / 에러면 0)
+
+9. joinservlet의 dopost에서 아이디, 비밀번호, 이름,
+   성별 등 jsp에서 post로 보낸 것들을 받아준다.
+ - 비밀번호 암호화하는 식도 적어주기
+ - UserVO 객체에 정보 다 담아서 joinUser 메소드 실행
+ - 회원가입이 완료되면 login창으로 이동하기
+
+10. loginservlet과 login.jsp를 만들어준다.
+ (doget = 주소창에 servlet주소를 입력하고 엔터 쳤을 때 실행되는 메소드)
+ (doGet)
+ - login.jsp 열어주기
+ - 근데 로그인한 상태일 경우 board/list로 이동
+ - 로그인 한 상태인지 확인하기 위해 request.getSession()으로 세션을 불러와 HttpSession타입 변수(hs)에 저장, 변수로 부터 getAttribute("로그인 유저 정보가 저장된 키")메소드로 로그인한 유저 정보 get, UserVO 타입 변수(loginUser)에 저장 후, 변수의 값이 null이 아니라면(= 로그인 성공,if문) /board/list로 sendRedirect해줌.
+ (doPost)
+ - 사용자가 입력한 아이디, 비밀번호 받아오기
+ - UserVO객체 만들어서 아이디 비밀번호담고
+   loginUser메소드 실행
+ - loginUser메소드로 부터 결과값을 받아 처리
+	1 : 로그인 성공이므로 유저정보가 담긴 UserVO객체를 세션에 set 해준다.(pw정보는 노출되면 안되므로 미리 null로 바꿔줘야 함) 그 후 /board/detail로 이동.
+	0, 2, 3 : switch~case문으로 에러알림 처리
+(로그인 실패이므로 다시 login 서블렛의 doget메소드 실행)
+
+* dopost에서 loginUser정보를 set해줘서 doget에서 loginUser정보를 getAttribute할 수 있음
+ -> session범위가 넓기때문에 계속 getAttribute해서 loginUser정보를 받아올 수 있게 됨 
+
+11. list.jsp와 listservlet을 만들어준다.
+ - BoardDAO에 selboardlist메소드 만들어서 안에 필요한거 담고 list반환
+ - 
+ - 
+
+
+12. 
+
+
+
+
+5. userDAO와 LoginServlet에 분기문 작성해준다.
+(아이디, 비밀번호 확인하기 위한 분기문)
+
+6. board/list로 넘어가니까 board폴더에 list.jsp만들어서 "로그인성공"
+
+7. com.koreait.board4 패키지아래에 com.koreait.board4.board 패키지 만들어준다.
+
+8. com.koreait.board4.board 패키지에 ListServlet 만들기
+
+
+9. t_board와 t_user db에서 join 걸기
+   t_user의 iuser에 t_board의 unm 하기위해
+
+
+게시판을 만들꺼야
+게시판을 만들기 위해 필요한거??
+ 1. 게시글들의 정보를 저장하기 위한 데이터베이스.
+ 2. 게시글 저장을 위한 테이블 만들기.
+ 게시글 테이블에 필요한 속성은 뭐가 있을까?
+	2-1. 게시글간의 식별을 위한 PK값(iboard)
+	2-2. 게시글의 제목(title)
+	2-3. 게시글의 내용(ctnt)
+	2-4. 게시글의 작성자를 식별하기 위한 FK값(iuser)
