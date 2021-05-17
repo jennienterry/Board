@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 Manifest-Version: 1.0
 Class-Path: 
 
@@ -7,3 +8,8 @@ Manifest-Version: 1.0
 Class-Path: 
 
 >>>>>>> refs/remotes/origin/main
+=======
+Manifest-Version: 1.0
+Class-Path: 
+
+>>>>>>> refs/remotes/origin/master

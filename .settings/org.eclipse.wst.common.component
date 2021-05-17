@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+<<<<<<< HEAD
     <wb-module deploy-name="BoardVer5">
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <property name="context-root" value="BoardVer5"/>
         <property name="java-output-path" value="/BoardVer5/build/classes"/>
+=======
+    <wb-module deploy-name="BoardVer1">
+        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+        <property name="context-root" value="BoardVer1"/>
+        <property name="java-output-path" value="/BoardVer1/build/classes"/>
+>>>>>>> refs/remotes/origin/master
     </wb-module>
 </project-modules>
